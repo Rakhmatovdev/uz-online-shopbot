@@ -46,15 +46,15 @@ const onCheckout=()=>{
 
 const onSendData=useCallback(()=>{
 
-const queryId=telegram.initDataUnsave?.query_id
+const queryID=telegram.initDataUnsave?.query_id;
 
-if(queryId){
+if(queryID){
 fetch("http://localhost:8000/web-data",{
 method:"POST",
 headers:{
-"Content-type":"application/json"
+"Content-Type":"application/json"
 },
-body:JSON.stringify({products:cardsItems,queryId})
+body:JSON.stringify({products:cardsItems,queryID:queryID})
 })
 }else{
   telegram.sendData(JSON.stringify(cardsItems))

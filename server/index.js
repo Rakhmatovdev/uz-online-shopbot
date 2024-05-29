@@ -2,13 +2,27 @@ const TelegramBot = require("node-telegram-bot-api");
 const token = "7273943241:AAGusZs_J2bSazfW0aLg-UTVq7tlkh8rfWs";
 const express = require('express')
 const cors =require('cors')
+
+
 const bot = new TelegramBot(token, { polling: true });
 const app=express()
 
 app.use(express.json())
 app.use(cors())
 
-const botStart = () => {
+
+
+    // bot.on('polling_error', (error) => {
+    //     console.error('Polling error:', error.code, error.message);
+    
+    //     if (error.code === 'EFATAL') {
+    //         console.log('Attempting to reconnect...');
+    //         setTimeout(() => {
+    //             bot.startPolling();
+    //         }, 5000); // Retry after 5 seconds
+    //     }
+    // });
+
 
 bot.setMyCommands([
     {command:"/start",description:"Kurs ha'qida ma'lumot"},
@@ -77,15 +91,14 @@ bot.setMyCommands([
     }
 
   });
-};
-botStart();
+
 
 app.post("/web-data",async (req,res)=>{
-const {queryId,products}=req.body
+const {queryID,products}=req.body
 try {
-   await bot.answerWebAppQuery(queryId,{
+   await bot.answerWebAppQuery(queryID,{
     type:"article",
-    id:queryId,
+    id:queryID,
     title:"Muvaffaqiyatli xarid qildingiz",
     input_message_content:{
         message_text:`Xaridingiz bilan tabriklayman, siz${products
