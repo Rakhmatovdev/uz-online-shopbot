@@ -55,6 +55,7 @@ bot.setMyCommands([
       );
     }
     if (msg.web_app_data?.data) {
+        console.log(msg.web_app_data?.data);
       try {
         const data = JSON.parse(msg.web_app_data?.data);
         await bot.sendMessage(
