@@ -54,10 +54,10 @@ method:"POST",
 headers:{
 "Content-type":"application/json"
 },
-body:JSON.stringify(cardsItems)
+body:JSON.stringify({products:cardsItems,queryId})
 })
 }else{
-  telegram.sendData(JSON.stringify({products:cardsItems,queryId}))
+  telegram.sendData(JSON.stringify(cardsItems))
 }
 },[cardsItems])
 
