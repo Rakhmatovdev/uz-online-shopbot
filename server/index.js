@@ -4,6 +4,13 @@ const token = "7273943241:AAGusZs_J2bSazfW0aLg-UTVq7tlkh8rfWs";
 const bot = new TelegramBot(token, { polling: true });
 
 const botStart = () => {
+
+bot.setMyCommands([
+    {command:"/start",description:"Kurs ha'qida ma'lumot"},
+    {command:"/courses",description:"Barcha kurslar"},
+    
+])
+
   bot.on("message", async (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
@@ -53,6 +60,17 @@ const botStart = () => {
         console.log(error);
       }
     }
+
+    if(text==='/courses'){
+        await bot.sendMessage(
+            chatId,
+            "Jasur.inc platformasida bor kurslarni sotib olishingiz mumkin",{
+                reply_markup:{
+                    inline_keyboard:[[{text:"Kurslarni ko'rish",web_app:{url:"https://uz-online-shopbot.vercel.app"}}]]
+                }
+            })
+    }
+
   });
 };
 botStart();
