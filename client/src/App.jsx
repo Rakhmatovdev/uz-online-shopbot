@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Cards from "./components/card/Cards";
 import Cart from "./components/cart/Cart";
 import { getData } from "./constants/db";
-
+import axios from "axios"
 const telegram=window.Telegram.WebApp
 const courses = getData();
 
@@ -48,13 +48,20 @@ const onSendData=useCallback(()=>{
 const queryID=telegram.initDataUnsafe?.query_id;
 if(queryID){
 // fetch("https://telegramwebapibot-b671371abfbb.herokuapp.com/web-data",{
-fetch("http://localhost:8000/web-data",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({products:cardsItems,queryID:queryID})
+// fetch("http://localhost:8000/web-data",{
+// method:"POST",
+// headers:{
+// "Content-Type":"application/json"
+// },
+// body: JSON.stringify({products:cardsItems,queryID:queryID})
+// })
+axios.post("http://localhost:8000/web-data",{products:cardsItems,queryID:queryID}).then(function (response) {
+  console.log(response);
 })
+.catch(function (error) {
+  console.log(error);
+});
+
 }else{
   telegram.sendData(JSON.stringify(cardsItems))
 }
