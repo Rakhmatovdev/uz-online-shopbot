@@ -1,7 +1,12 @@
 const TelegramBot = require("node-telegram-bot-api");
 const token = "7273943241:AAGusZs_J2bSazfW0aLg-UTVq7tlkh8rfWs";
-
+const express = require('express')
+const cors =require('cors')
 const bot = new TelegramBot(token, { polling: true });
+const app=express()
+
+app.use(express.json())
+app.use(cors())
 
 const botStart = () => {
 
@@ -74,3 +79,11 @@ bot.setMyCommands([
   });
 };
 botStart();
+
+app.post("/web-data",async (req,res)=>{
+
+})
+
+app.listen(process.env.PORT ||8000,()=>{
+    console.log("Server started...");
+})

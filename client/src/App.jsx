@@ -57,7 +57,7 @@ headers:{
 body:JSON.stringify(cardsItems)
 })
 }else{
-  telegram.sendData(JSON.stringify(cardsItems))
+  telegram.sendData(JSON.stringify({products:cardsItems,queryId}))
 }
 },[cardsItems])
 
