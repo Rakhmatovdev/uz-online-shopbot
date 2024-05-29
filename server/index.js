@@ -81,7 +81,28 @@ bot.setMyCommands([
 botStart();
 
 app.post("/web-data",async (req,res)=>{
+const {queryId,products}=req.body
+try {
+   await bot.answerWebAppQuery(queryId,{
+    type:"article",
+    id:queryId,
+    title:"Muvaffaqiyatli xarid qildingiz",
+    input_message_content:{
+        message_text:`Xaridingiz bilan tabriklayman, siz${products
+            .reduce((a, c) => a + c.price * c.quantity, 0)
+            .toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })} qiymatga ega mahsulot sotib oldingiz, ${products.map((pr)=>`${pr.title} ${pr.quantity}x`).join(", ")}`
+    }
+   })
+    
 
+   return res.status(200).json(products)
+
+} catch (error) {
+    return res.status(500).json({})
+}
 })
 
 app.listen(process.env.PORT ||8000,()=>{
