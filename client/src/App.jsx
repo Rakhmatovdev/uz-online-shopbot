@@ -46,10 +46,9 @@ const onCheckout=()=>{
 
 const onSendData=useCallback(()=>{
 const queryID=telegram.initDataUnsafe?.query_id;
-console.log(1);
 if(queryID){
-// fetch("https://telegramwebapibot-b671371371abfbb.herokuapp.com/web-data",{
-fetch("http://localhost:8000/web-data",{
+fetch("https://telegramwebapibot-b671371abfbb.herokuapp.com/web-data",{
+// fetch("http://localhost:8000/web-data",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"

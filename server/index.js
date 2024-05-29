@@ -86,7 +86,7 @@ bot.setMyCommands([
             chatId,
             "Jasur.inc platformasida bor kurslarni sotib olishingiz mumkin",{
                 reply_markup:{
-                    inline_keyboard:[[{text:"Kurslarni ko'rish",web_app:{url:"https://uz-online-shopbot.vercel.app"}}]]
+                    inline_keyboard:[[{text:"Kurslarni ko'rish",web_app:{url:"https://uz-online-shopbot.vercel.app",}}]]
                 }
             })
     }
