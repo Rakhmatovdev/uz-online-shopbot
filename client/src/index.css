@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn{
+@apply px-4 py-3 outline-none w-[120px] rounded-[10px] text-xl text-center bg-white text-black cursor-pointer shadow-lg transition-all
+}
+.badge{
+@apply absolute top-0 right-0 w-10 h-10 bg-orange-500 rounded-full items-center flex justify-center translate-x-5 -translate-y-5 opacity-80 font-bold text-xl animate-wiggle   duration-300 text-white transition-all 
+}
+.btn.add{
+    background-color:#e0c521 ;
+}
+.btn.add:hover{
+    background-color:#cab320 ;
+}
+.btn.add:active{
+    background-color:#ad9a1c ;
+}
+
+.btn.remove{
+    background-color: tomato;
+}
+.btn.remove:hover{
+    background-color:rgb(209, 83, 61) ;
+}
+.btn.remove:active{
+    background-color:rgb(185, 73, 54) ;
+}
+
+.btn.checkout{
+    background-color: #47bb77c6;
+    width: 160px;
+    color: #fff;
+    font-size: 16px;
+}
+.btn.checkout:hover{
+    background-color:#47bb78 ;
+}
+.btn.checkout:active{
+    background-color:rgb(30, 93, 41) ;
+}
